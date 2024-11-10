@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class FinancialApplication {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner (System.in);
+		
+		int years;
+		double loan, interestRate;
+		
+		System.out.println("Enter the loan amount: ");
+		loan = sc.nextDouble();
+		
+		System.out.println("Number of years of the loan period: ");
+		years = sc.nextInt();
+		
+		System.out.printf("\n%-20s%-20s%-20s\n", "Interest Rate", "Monthly Payment", "Total Payment");
+		
+		for(interestRate = 5; interestRate <= 10; interestRate += 0.25) {
+		
+			double monthlyRates = interestRate/(12 * 100);
+			double monthlyPayments = (loan * monthlyRates)/(1 - 1 / Math.pow(1 + monthlyRates, years * 12));
+			double totalPayment = (monthlyPayments * 12) * years;
+			
+			System.out.printf("%.3f%-19s$%-17.2f$%-12.2f\n", interestRate, "%", monthlyPayments, totalPayment);
+			
+		}
+		
+	}
+
+}
